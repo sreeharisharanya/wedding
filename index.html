@@ -1,0 +1,652 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Kalam:wght@300;400;700&display=swap" rel="stylesheet">
+  <title>Wedding Invitation</title>
+  <script src="/_sdk/element_sdk.js"></script>
+  <style>
+    
+        body {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', 'Segoe UI', 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #f8f4f0 0%, #e8ddd4 100%);
+            min-height: 100%;
+            color: #2c1810;
+        }
+
+        html {
+            height: 100%;
+        }
+
+        .invitation-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            min-height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .invitation-card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 60px 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            border: 2px solid #d4af37;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .invitation-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="10" cy="10" r="1" fill="%23d4af37" opacity="0.1"/><circle cx="90" cy="20" r="1" fill="%23d4af37" opacity="0.1"/><circle cx="20" cy="80" r="1" fill="%23d4af37" opacity="0.1"/><circle cx="80" cy="90" r="1" fill="%23d4af37" opacity="0.1"/></svg>') repeat;
+            pointer-events: none;
+        }
+
+        .content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .decorative-border {
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #d4af37, transparent);
+            margin: 0 auto 30px;
+        }
+
+        .invitation-header {
+            font-size: 18px;
+            color: #8b6914;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+
+        .couple-names {
+            font-size: 68px;
+            color: #2c1810;
+            margin: 30px 0;
+            font-weight: 900;
+            line-height: 1.2;
+            font-family: "Caveat", cursive;
+            
+        }
+
+        .ampersand {
+            font-size: 36px;
+            color: #d4af37;
+            margin: 0 20px;
+            font-style: italic;
+        }
+
+        .welcome-message {
+            font-size: 25px;
+            color: #5a4a3a;
+            margin: 30px 0 20px;
+            font-weight: 400;
+            line-height: 1.5;
+            font-style: italic;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            font-family: 'Kalam', cursive;
+        }
+
+        .wedding-date {
+            font-size: 34px;
+            color: #8b6914;
+            margin: 40px 0;
+            font-weight: 300;
+            letter-spacing: 1px;
+            font-family: "Caveat", cursive ;
+        }
+
+        .ceremony-details {
+            background: #faf8f5;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 40px 0;
+            border-left: 4px solid #d4af37;
+        }
+
+        .ceremony-time {
+            font-size: 20px;
+            color: #2c1810;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .venue-info {
+            color: #5a4a3a;
+            line-height: 1.6;
+        }
+
+        .venue-name {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .venue-address {
+            font-size: 16px;
+        }
+
+        .rsvp-section {
+            margin-top: 40px;
+            padding: 25px;
+            background: linear-gradient(135deg, #d4af37, #b8941f);
+            border-radius: 15px;
+            color: white;
+        }
+
+        .rsvp-title {
+            font-size: 20px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .rsvp-details {
+            font-size: 20px;
+            line-height: 1.5;
+        }
+
+        .contact-info {
+            margin-top: 30px;
+            font-size: 14px;
+            color: #8b6914;
+            font-style: italic;
+        }
+
+        .floral-decoration {
+            width: 60px;
+            height: 60px;
+            margin: 20px auto;
+            opacity: 0.7;
+        }
+
+        .location-boxes {
+            margin: 40px 0;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        @media (min-width: 768px) {
+            .location-boxes {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .location-section {
+            padding: 30px;
+            background: #fefefe;
+            border-radius: 15px;
+            border: 1px solid #e8ddd4;
+        }
+
+        .location-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            gap: 10px;
+        }
+
+        .location-icon {
+            width: 24px;
+            height: 24px;
+        }
+
+        .location-header h3 {
+            margin: 0;
+            font-size: 18px;
+            color: #2c1810;
+            font-weight: 600;
+        }
+
+        .location-info {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+
+
+        .location-item {
+            text-align: left;
+        }
+
+        .location-item strong {
+            display: block;
+            color: #8b6914;
+            font-size: 14px;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .location-item div {
+            color: #2c1810;
+            font-size: 16px;
+            line-height: 1.4;
+        }
+
+        .directions-section {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #e8ddd4;
+        }
+
+        .directions-btn {
+            background: linear-gradient(135deg, #d4af37, #b8941f);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .directions-btn:hover {
+            background: linear-gradient(135deg, #b8941f, #9d7a1a);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+            display: block;
+            filter: drop-shadow(0 0 10px #00dd37);
+
+        }
+
+        .directions-btn svg {
+            width: 18px;
+            height: 18px;
+        }
+        .pre{
+            font-family: cursive;
+        }
+
+        @media (max-width: 768px) {
+            .invitation-card {
+                padding: 40px 25px;
+                margin: 20px 10px;
+            }
+            
+            .couple-names {
+                font-size: 36px;
+            }
+            
+            .ampersand {
+                font-size: 28px;
+                margin: 0 10px;
+            }
+            
+            .wedding-date {
+                font-size: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .couple-names {
+                font-size: 28px;
+            }
+            
+            .wedding-date {
+                font-size: 18px;
+            }
+            
+            .ceremony-details {
+                padding: 20px;
+            }
+
+            .location-section {
+                padding: 20px;
+            }
+
+            .location-info {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .location-item {
+                text-align: center;
+            }
+        }
+    </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
+ </head>
+ <body>
+  <main class="invitation-container">
+   <div class="invitation-card">
+    <div class="content">
+     <div class="decorative-border"></div>
+     <div class="invitation-header">
+      Together with their families
+     </div>
+     <div class="couple-names"><span id="bride-name">Sreehari B</span> <span class="ampersand">&amp;</span> <span id="groom-name">Sharanya P</span>
+     </div>
+     <div class="floral-decoration">
+      <svg viewbox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M30 45C35 40 45 35 45 25C45 20 40 15 35 15C32 15 30 17 30 17S28 15 25 15C20 15 15 20 15 25C15 35 25 40 30 45Z" fill="#d4af37" opacity="0.6" /> <path d="M30 15C25 20 15 25 15 35C15 40 20 45 25 45C28 45 30 43 30 43S32 45 35 45C40 45 45 40 45 35C45 25 35 20 30 15Z" fill="#d4af37" opacity="0.4" /> <circle cx="30" cy="30" r="3" fill="#d4af37" />
+      </svg>
+     </div>
+     <div class="welcome-message">
+      We welcome all our loved ones for the joyful gathering filled with love and laughter.
+     </div>
+     <div class="wedding-date" id="wedding-date">
+      Monday, December 15th, 2025
+     </div>
+     <div class="ceremony-details">
+      <div class="ceremony-time" id="ceremony-time">
+       12:05 TO 01:00 PM
+      </div>
+      <div class="venue-info">
+       <div class="venue-name" id="venue-name">
+        ALBA ARCADE AUDITORIUM
+       </div>
+       <div class="venue-address" id="venue-address">
+        Parambil Bazar, Kozhikode, Kerala
+       </div>
+      </div>
+     </div>
+     <div class="location-boxes">
+      <div class="location-section">
+       <div class="location-header">
+        <svg class="location-icon" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21 10C21 17 12 23 12 23S3 17 3 10C3 5.02944 7.02944 1 12 1C16.9706 1 21 5.02944 21 10Z" stroke="#d4af37" stroke-width="2" /> <circle cx="12" cy="10" r="3" stroke="#d4af37" stroke-width="2" />
+        </svg>
+        <h3 id="location1-title">Ceremony Location</h3>
+       </div>
+       <div class="location-info">
+        <div class="location-item"><strong>Venue:</strong>
+         <div id="location1-venue">
+          
+            ALBA ARCADE AUDITORIUM
+         </div>
+        </div>
+        <div class="location-item"><strong>Address:</strong>
+         <div id="location1-address">
+           Parambil Bazar-Kannadikkal Rd, Parambil Bazar, Kozhikode, Kerala 673012
+         </div>
+        </div>
+        <div class="location-item"><strong>Time:</strong>
+         <div id="location1-time">
+          12:05 TO 01:00 PM
+         </div>
+        </div>
+       </div>
+       <div class="directions-section"><a href="https://maps.app.goo.gl/MhTWBmYCCTM3xrcW6" target="_blank" rel="noopener noreferrer" class="directions-btn">
+         <svg viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 11H15M9 15H12M21 5V19C21 20.1046 20.1046 21 19 21H5C3.89543 21 3 20.1046 3 19V5C3 3.89543 3.89543 3 5 3H19C20.1046 3 21 3.89543 21 5Z" stroke="white" stroke-width="2" stroke-linecap="round" />
+         </svg> Get Directions </a>
+       </div>
+      </div>
+      <div class="location-section">
+       <div class="location-header">
+        <svg class="location-icon" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21 10C21 17 12 23 12 23S3 17 3 10C3 5.02944 7.02944 1 12 1C16.9706 1 21 5.02944 21 10Z" stroke="#d4af37" stroke-width="2" /> <circle cx="12" cy="10" r="3" stroke="#d4af37" stroke-width="2" />
+        </svg>
+        <h3 id="location2-title">Pre-Wedding Celebration</h3>
+       </div>
+       <div class="location-info">
+        <div class="location-item"><strong>Venue:</strong>
+         <div id="location2-venue">
+            Madhuvan House
+         </div>
+        </div>
+        <div class="location-item"><strong>Address:</strong>
+         <div id="location2-address">
+          MHC4+P7G, Chombala, Azhiyur, Kerala 673308
+         </div>
+        </div>
+        <div class="location-item"><strong>Time:</strong>
+         <div id="location2-time">
+          4:00 TO 10:00 PM
+         </div>
+        </div>
+       </div>
+       <div class="directions-section"><a href="https://maps.app.goo.gl/vo2DsVVKRAPsXoeKA" target="_blank" rel="noopener noreferrer" class="directions-btn">
+         <svg viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 11H15M9 15H12M21 5V19C21 20.1046 20.1046 21 19 21H5C3.89543 21 3 20.1046 3 19V5C3 3.89543 3.89543 3 5 3H19C20.1046 3 21 3.89543 21 5Z" stroke="white" stroke-width="2" stroke-linecap="round" />
+         </svg> Get Directions </a>
+       </div>
+      </div>
+     </div>
+     <div class="rsvp-section">
+      <div class="rsvp-details">
+       <div class="pre">
+        Join our joyous pre-wedding celebration at the groom's home on 21.12.2025. All are warmly welcome!
+       </div>
+      </div>
+     </div>
+     <div class="decorative-border" style="margin-top: 40px; margin-bottom: 0;"></div>
+    </div>
+   </div>
+  </main>
+  <script>
+        const defaultConfig = {
+            bride_name: "Sreehari B",
+            groom_name: "Sharanya P",
+            wedding_date: "Monday, December 22nd, 2025",
+            ceremony_time: "12:05 To 01:00 PM",
+            venue_name: "ALBA ARCADE AUDITORIUM",
+            venue_address: "123 Celebration Ave, Love City",
+            location1_title: "Ceremony Location",
+            location1_venue: "ALBA ARCADE AUDITORIUM",
+            location1_address: "Parambil Bazar-Kannadikkal Rd, Parambil Bazar, Kozhikode, Kerala 673012",
+            location1_time: "12:05 TO 01:00 PM",
+            location2_title: "Pre-Wedding Celebration",
+            location2_venue: "Madhuvan House",
+            location2_address: "MHC4+P7G, Chombala, Azhiyur, Kerala 673308",
+            location2_time: "03:00 TO 10:00 PM",
+
+            rsvp_date: "May 1st, 2024",
+            contact_info: "contact@ourwedding.com or (555) 123-4567",
+            background_color: "#f8f4f0",
+            card_color: "#ffffff",
+            accent_color: "#d4af37",
+            text_color: "#2c1810",
+            font_family: "Inter"
+        };
+
+        async function onConfigChange(config) {
+            const brideName = config.bride_name || defaultConfig.bride_name;
+            const groomName = config.groom_name || defaultConfig.groom_name;
+            const weddingDate = config.wedding_date || defaultConfig.wedding_date;
+            const ceremonyTime = config.ceremony_time || defaultConfig.ceremony_time;
+            const venueName = config.venue_name || defaultConfig.venue_name;
+            const venueAddress = config.venue_address || defaultConfig.venue_address;
+            const location1Title = config.location1_title || defaultConfig.location1_title;
+            const location1Venue = config.location1_venue || defaultConfig.location1_venue;
+            const location1Address = config.location1_address || defaultConfig.location1_address;
+            const location1Time = config.location1_time || defaultConfig.location1_time;
+            const location2Title = config.location2_title || defaultConfig.location2_title;
+            const location2Venue = config.location2_venue || defaultConfig.location2_venue;
+            const location2Address = config.location2_address || defaultConfig.location2_address;
+            const location2Time = config.location2_time || defaultConfig.location2_time;
+
+            const rsvpDate = config.rsvp_date || defaultConfig.rsvp_date;
+            const contactInfo = config.contact_info || defaultConfig.contact_info;
+            const backgroundColor = config.background_color || defaultConfig.background_color;
+            const cardColor = config.card_color || defaultConfig.card_color;
+            const accentColor = config.accent_color || defaultConfig.accent_color;
+            const textColor = config.text_color || defaultConfig.text_color;
+            const fontFamily = config.font_family || defaultConfig.font_family;
+
+            // Update text content
+            document.getElementById('bride-name').textContent = brideName;
+            document.getElementById('groom-name').textContent = groomName;
+            document.getElementById('wedding-date').textContent = weddingDate;
+            document.getElementById('ceremony-time').textContent = ceremonyTime;
+            document.getElementById('venue-name').textContent = venueName;
+            document.getElementById('venue-address').textContent = venueAddress;
+            document.getElementById('location1-title').textContent = location1Title;
+            document.getElementById('location1-venue').textContent = location1Venue;
+            document.getElementById('location1-address').textContent = location1Address;
+            document.getElementById('location1-time').textContent = location1Time;
+            document.getElementById('location2-title').textContent = location2Title;
+            document.getElementById('location2-venue').textContent = location2Venue;
+            document.getElementById('location2-address').textContent = location2Address;
+            document.getElementById('location2-time').textContent = location2Time;
+
+            document.getElementById('rsvp-date').textContent = rsvpDate;
+            document.getElementById('contact-info').textContent = contactInfo;
+
+            // Update colors
+            document.body.style.background = linear-gradient(135deg, ${backgroundColor} 0%, ${adjustColor(backgroundColor, -10)} 100%);
+            document.body.style.color = textColor;
+            
+            const card = document.querySelector('.invitation-card');
+            card.style.backgroundColor = cardColor;
+            card.style.borderColor = accentColor;
+            card.style.color = textColor;
+
+            // Update accent colors
+            const accentElements = document.querySelectorAll('.ampersand, .rsvp-section');
+            accentElements.forEach(el => {
+                if (el.classList.contains('rsvp-section')) {
+                    el.style.background = linear-gradient(135deg, ${accentColor}, ${adjustColor(accentColor, -15)});
+                } else {
+                    el.style.color = accentColor;
+                }
+            });
+
+            // Update font family
+            const fontStack = ${fontFamily}, 'Segoe UI', 'Roboto', sans-serif;
+            document.body.style.fontFamily = fontStack;
+        }
+
+        function adjustColor(hex, percent) {
+            const num = parseInt(hex.replace("#", ""), 16);
+            const amt = Math.round(2.55 * percent);
+            const R = (num >> 16) + amt;
+            const G = (num >> 8 & 0x00FF) + amt;
+            const B = (num & 0x0000FF) + amt;
+            return "#" + (0x1000000 + (R < 255 ? R < 1 ? 0 : R : 255) * 0x10000 +
+                (G < 255 ? G < 1 ? 0 : G : 255) * 0x100 +
+                (B < 255 ? B < 1 ? 0 : B : 255)).toString(16).slice(1);
+        }
+
+        function mapToCapabilities(config) {
+            return {
+                recolorables: [
+                    {
+                        get: () => config.background_color || defaultConfig.background_color,
+                        set: (value) => {
+                            config.background_color = value;
+                            if (window.elementSdk) {
+                                window.elementSdk.setConfig({ background_color: value });
+                            }
+                        }
+                    },
+                    {
+                        get: () => config.card_color || defaultConfig.card_color,
+                        set: (value) => {
+                            config.card_color = value;
+                            if (window.elementSdk) {
+                                window.elementSdk.setConfig({ card_color: value });
+                            }
+                        }
+                    },
+                    {
+                        get: () => config.accent_color || defaultConfig.accent_color,
+                        set: (value) => {
+                            config.accent_color = value;
+                            if (window.elementSdk) {
+                                window.elementSdk.setConfig({ accent_color: value });
+                            }
+                        }
+                    },
+                    {
+                        get: () => config.text_color || defaultConfig.text_color,
+                        set: (value) => {
+                            config.text_color = value;
+                            if (window.elementSdk) {
+                                window.elementSdk.setConfig({ text_color: value });
+                            }
+                        }
+                    }
+                ],
+                borderables: [],
+                fontEditable: {
+                    get: () => config.font_family || defaultConfig.font_family,
+                    set: (value) => {
+                        config.font_family = value;
+                        if (window.elementSdk) {
+                            window.elementSdk.setConfig({ font_family: value });
+                        }
+                    }
+                },
+                fontSizeable: undefined
+            };
+        }
+
+        function mapToEditPanelValues(config) {
+            return new Map([
+                ["bride_name", config.bride_name || defaultConfig.bride_name],
+                ["groom_name", config.groom_name || defaultConfig.groom_name],
+                ["wedding_date", config.wedding_date || defaultConfig.wedding_date],
+                ["ceremony_time", config.ceremony_time || defaultConfig.ceremony_time],
+                ["venue_name", config.venue_name || defaultConfig.venue_name],
+                ["venue_address", config.venue_address || defaultConfig.venue_address],
+                ["location1_title", config.location1_title || defaultConfig.location1_title],
+                ["location1_venue", config.location1_venue || defaultConfig.location1_venue],
+                ["location1_address", config.location1_address || defaultConfig.location1_address],
+                ["location1_time", config.location1_time || defaultConfig.location1_time],
+                ["location2_title", config.location2_title || defaultConfig.location2_title],
+                ["location2_venue", config.location2_venue || defaultConfig.location2_venue],
+                ["location2_address", config.location2_address || defaultConfig.location2_address],
+                ["location2_time", config.location2_time || defaultConfig.location2_time],
+
+                ["rsvp_date", config.rsvp_date || defaultConfig.rsvp_date],
+                ["contact_info", config.contact_info || defaultConfig.contact_info]
+            ]);
+        }
+
+        function openDirections(location) {
+            let address;
+            if (location === 'location1') {
+                address = (window.elementSdk && window.elementSdk.config.location1_address) || defaultConfig.location1_address;
+            } else if (location === 'location2') {
+                address = (window.elementSdk && window.elementSdk.config.location2_address) || defaultConfig.location2_address;
+            } else {
+                address = (window.elementSdk && window.elementSdk.config.venue_address) || defaultConfig.venue_address;
+            }
+            const encodedAddress = encodeURIComponent(address);
+            const mapsUrl = https://www.google.com/maps/search/?api=1&query=${encodedAddress};
+            window.open(mapsUrl, '_blank', 'noopener,noreferrer');
+        }
+
+        // Initialize the SDK
+        if (window.elementSdk) {
+            window.elementSdk.init({
+                defaultConfig,
+                onConfigChange,
+                mapToCapabilities,
+                mapToEditPanelValues
+            });
+        }
+    </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'997201bd95417f8a',t:'MTc2MTkwMTY5NS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
