@@ -3,9 +3,10 @@
  <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <meta property="og:title" content="Wedding Invitation">
+  <meta property="og:title" content="Wedding Invitation">
   <meta property="og:description" content="You are cordially invited to celebrate the wedding of Sreehari B & Sharanya P. Join us for a joyous occasion filled with love and happiness.">
   <meta property="og:image" content="https://example.com/wedding-invitation-image.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
   <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,6 +26,8 @@
             background: linear-gradient(135deg, #f8f4f0 0%, #e8ddd4 100%);
             min-height: 100%;
             color: #2c1810;
+            animation-name: fade;
+            animation-duration: 2s;
         }
 
         html {
@@ -91,6 +94,8 @@
             font-weight: 900;
             line-height: 1.2;
             font-family: "Caveat", cursive;
+            animation-name: fade;
+            animation-duration: 2s
             
         }
 
@@ -191,6 +196,9 @@
             display: grid;
             grid-template-columns: 1fr;
             gap: 20px;
+            animation-name: fade;
+            animation-duration: 2s;
+            opacity: 1;
         }
 
         @media (min-width: 768px) {
@@ -291,6 +299,9 @@
         }
         .pre{
             font-family: cursive;
+        }
+        @keyframes fade{
+            50%{opacity: 0;}
         }
 
         @media (max-width: 768px) {
@@ -652,6 +663,4 @@
         }
     </script>
  <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'997201bd95417f8a',t:'MTc2MTkwMTY5NS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
-
 </html>
-
